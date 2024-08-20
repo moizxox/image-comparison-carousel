@@ -1,0 +1,161 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: rgb(197,193,255);
+    background: linear-gradient(90deg, rgba(197,193,255,1) 0%, rgba(208,248,255,1) 48%, rgba(97,110,255,1) 100%);
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 1280px;
+    margin: 40px auto;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.carousel-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.carousel-prev,
+.carousel-next {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    color: white;
+}
+
+.arrow-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.carousel-dots .dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: width 0.3s ease;
+}
+
+.carousel-dots .dot.active {
+    width: 30px;
+}
+
+.img-compare {
+    width: 100%;
+    height: 600px;
+    position: relative;
+}
+
+.img-compare .img-compare-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.img-compare img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.img-compare-before {
+    clip-path: inset(0 50% 0 0);
+    z-index: 2;
+}
+
+.slider-line {
+    background-color: rgb(255, 255, 255);
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 3;
+}
+
+.slider-icon {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 50%;
+    padding: 10px;
+    z-index: 3;
+}
+
+input[type="range"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    z-index: 4;
+}
+
+.slider-items {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* Labels for Before and After */
+.img-label {
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    z-index: 4;
+}
+
+.img-label-before {
+    top: 20px;
+    left: 20px;
+}
+
+.img-label-after {
+    top: 20px;
+    right: 20px;
+}
