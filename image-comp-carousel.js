@@ -1,59 +1,27 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const carouselWrapper = document.querySelector('.carousel-wrapper');
-    const carouselItems = document.querySelectorAll('.carousel-item');
-    const prevButton = document.querySelector('.carousel-prev');
-    const nextButton = document.querySelector('.carousel-next');
-    const dotsContainer = document.querySelector('.carousel-dots');
-    
-    let currentIndex = 0;
-
-    // Initialize dots
-    carouselItems.forEach((item, index) => {
-        const dot = document.createElement('div');
-        dot.classList.add('carousel-dot');
-        if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(index));
-        dotsContainer.appendChild(dot);
+document.addEventListener('DOMContentLoaded', function () {
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
     });
 
-    const updateDots = () => {
-        const dots = document.querySelectorAll('.carousel-dot');
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
-        });
-    };
-
-    const goToSlide = (index) => {
-        currentIndex = index;
-        carouselWrapper.style.transform = `translateX(-${index * 100}%)`;
-        updateDots();
-    };
-
-    const nextSlide = () => {
-        currentIndex = (currentIndex + 1) % carouselItems.length;
-        goToSlide(currentIndex);
-    };
-
-    const prevSlide = () => {
-        currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
-        goToSlide(currentIndex);
-    };
-
-    nextButton.addEventListener('click', nextSlide);
-    prevButton.addEventListener('click', prevSlide);
-
-    // Initialize the image comparison sliders
-    document.querySelectorAll('.slider').forEach((slider) => {
-        let container = slider.closest('.img-compare-container');
-        let beforeImg = container.querySelector('.img-compare-before');
-        let sliderLine = container.querySelector('.slider-line');
-        let sliderIcon = container.querySelector('.slider-icon');
-        let beforeLabel = container.querySelector('.img-label-before');
-        let afterLabel = container.querySelector('.img-label-after');
+    document.querySelectorAll('.swiper-slide').forEach(slide => {
+        const slider = slide.querySelector('.slider');
+        const beforeImg = slide.querySelector('.img-compare-before');
+        const sliderLine = slide.querySelector('.slider-line');
+        const sliderIcon = slide.querySelector('.slider-icon');
+        const beforeLabel = slide.querySelector('.img-label-before');
+        const afterLabel = slide.querySelector('.img-label-after');
 
         slider.addEventListener('input', (e) => {
             let value = e.target.value + '%';
-
             beforeImg.style.clipPath = `inset(0 ${100 - e.target.value}% 0 0)`;
             sliderLine.style.left = value;
             sliderIcon.style.left = value;
